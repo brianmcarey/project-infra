@@ -569,6 +569,8 @@ presets:
     value: http://docker-mirror-proxy.kubevirt-prow.svc:3128
   - name: CONTAINER_HTTPS_PROXY
     value: http://docker-mirror-proxy.kubevirt-prow.svc:3128
+  - name: KUBEVIRTCI_PROXY
+    value: http://docker-mirror-proxy.kubevirt-prow.svc:3128
   volumes:
   - name: docker-mirror-proxy-ca-cert
     configMap:
