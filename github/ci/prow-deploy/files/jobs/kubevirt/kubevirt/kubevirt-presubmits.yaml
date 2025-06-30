@@ -1061,7 +1061,7 @@ presubmits:
         name: ""
         resources:
           requests:
-            memory: 16Gi
+            memory: 24Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -1090,7 +1090,7 @@ presubmits:
     labels:
       preset-bazel-unnested: "false"
       preset-dind-enabled: "true"
-    max_concurrency: 4
+    max_concurrency: 2
     name: pull-kubevirt-conformance-arm64
     optional: true
     skip_branches:
@@ -1119,7 +1119,7 @@ presubmits:
         name: ""
         resources:
           requests:
-            memory: 52Gi
+            memory: 24Gi
         securityContext:
           privileged: true
         volumeMounts:

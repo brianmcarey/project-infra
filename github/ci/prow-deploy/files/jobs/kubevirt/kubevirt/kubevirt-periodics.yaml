@@ -783,7 +783,7 @@ periodics:
       name: ""
       resources:
         requests:
-          memory: 16Gi
+          memory: 24Gi
       securityContext:
         privileged: true
       volumeMounts:
