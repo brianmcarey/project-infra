@@ -295,15 +295,21 @@ periodics:
       command:
       - "/usr/local/bin/runner.sh"
       - "/bin/bash"
-      - "-c"
+      - "-ce"
       - |
-        cat $QUAY_PASSWORD | podman login --username $(<$QUAY_USER) --password-stdin quay.io &&
-        PROVISION_CENTOS_VERSION=10 ./hack/bump-centos-version.sh &&
-        SHORT_SHA=$(git rev-parse --short HEAD) &&
-        GIT_ASKPASS=../project-infra/hack/git-askpass.sh ../project-infra/hack/git-pr.sh -c "PROVISION_CENTOS_VERSION=10 PHASES=linux BYPASS_PMAN_CHANGE_CHECK=true ./publish.sh" -r kubevirtci -b bump-centos10-stream -T main -p $(pwd) -s "Automatic bump of CentOS 10 Stream to latest" -L skip-review &&
+        cat $QUAY_PASSWORD | podman login --username $(<$QUAY_USER) --password-stdin quay.io
+        PROVISION_CENTOS_VERSION=10 ./hack/bump-centos-version.sh
+        SHORT_SHA=$(git rev-parse --short HEAD)
+        GIT_ASKPASS=../project-infra/hack/git-askpass.sh ../project-infra/hack/git-pr.sh -c "PROVISION_CENTOS_VERSION=10 PHASES=linux BYPASS_PMAN_CHANGE_CHECK=true ./publish.sh" \
+        -r kubevirtci \
+        -b bump-centos10-stream \
+        -T main \
+        -p $(pwd) \
+        -s "Automatic bump of CentOS 10 Stream to latest" \
+        -L skip-review
         # For passing centos image tag to dependent (s390x) prow job
-        image_tag=$(cut -d ':' -f 2 cluster-provision/k8s/base-image-centos10) &&
-        echo "$image_tag" > amd64-centos10-$SHORT_SHA &&
+        image_tag=$(cut -d ':' -f 2 cluster-provision/k8s/base-image-centos10)
+        echo "$image_tag" > amd64-centos10-$SHORT_SHA
         gsutil cp ./amd64-centos10-$SHORT_SHA gs://kubevirt-prow/release/kubevirt/kubevirtci/amd64-centos10-$SHORT_SHA
       securityContext:
         privileged: true
@@ -334,13 +340,13 @@ periodics:
       command:
       - "/usr/local/bin/runner.sh"
       - "/bin/bash"
-      - "-c"
+      - "-ce"
       - |
         # For getting centos image tag from amd64 prow job and use same for s390x and manifest-list images
-        SHORT_SHA=$(git rev-parse --short HEAD) &&
-        GCS_FILE_PATH=release/kubevirt/kubevirtci/amd64-centos10-$SHORT_SHA &&
-        CHECK_INTERVAL=30 &&
-        source /usr/local/bin/gcs_restapi.sh &&
+        SHORT_SHA=$(git rev-parse --short HEAD)
+        GCS_FILE_PATH=release/kubevirt/kubevirtci/amd64-centos10-$SHORT_SHA
+        CHECK_INTERVAL=30
+        source /usr/local/bin/gcs_restapi.sh
         while true; do
             if stat_gcs_file kubevirt-prow "$GCS_FILE_PATH" "false"; then
                 echo "File $GCS_FILE_PATH is now available."
@@ -355,11 +361,11 @@ periodics:
             echo "Failed to fetch KUBEVIRTCI_TAG"
             exit 1
         fi
-        export KUBEVIRTCI_TAG &&
-        echo "Fetched KUBEVIRTCI_TAG: $KUBEVIRTCI_TAG" &&
-        cat $QUAY_PASSWORD | podman login --username $(<$QUAY_USER) --password-stdin quay.io &&
-        PROVISION_CENTOS_VERSION=10 ./hack/bump-centos-version.sh &&
-        export PROVISION_CENTOS_VERSION=10; export PHASES=linux; export BYPASS_PMAN_CHANGE_CHECK=true; ./publish.sh &&
+        export KUBEVIRTCI_TAG
+        echo "Fetched KUBEVIRTCI_TAG: $KUBEVIRTCI_TAG"
+        cat $QUAY_PASSWORD | podman login --username $(<$QUAY_USER) --password-stdin quay.io
+        PROVISION_CENTOS_VERSION=10 ./hack/bump-centos-version.sh
+        export PROVISION_CENTOS_VERSION=10; export PHASES=linux; export BYPASS_PMAN_CHANGE_CHECK=true; ./publish.sh
         rm_gcs_file kubevirt-prow "$GCS_FILE_PATH"
       env:
       - name: GIMME_GO_VERSION
