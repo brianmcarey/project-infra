@@ -686,12 +686,6 @@ presubmits:
           value: 1.24.7
         - name: PROVISION_CENTOS_VERSION
           value: "10"
-        - name: PHASES
-          value: linux,k8s
-        - name: CHECK_CLUSTER
-          value: "true"
-        - name: KUBEVIRT_PSA
-          value: "true"
         image: quay.io/kubevirtci/golang:v20260319-c8f1db8
         name: ""
         resources:
