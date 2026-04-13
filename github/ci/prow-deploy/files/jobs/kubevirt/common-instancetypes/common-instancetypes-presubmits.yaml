@@ -22,7 +22,7 @@ presubmits:
         resources:
           requests:
             memory: "1Gi"
-  - name: pull-common-instancetypes-kubevirt-functest
+  - name: pull-common-instancetypes-functest
     branches:
       - main
     always_run: false
@@ -63,7 +63,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-fedora
+  - name: pull-common-instancetypes-functest-fedora
     branches:
       - main
     always_run: false
@@ -104,7 +104,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-fedora-s390x
+  - name: pull-common-instancetypes-functest-fedora-s390x
     branches:
       - main
     always_run: false
@@ -191,7 +191,7 @@ presubmits:
           path: /sys/fs/cgroup
           type: Directory
         name: cgroup
-  - name: pull-common-instancetypes-kubevirt-functest-centos-stream-8
+  - name: pull-common-instancetypes-functest-centos-stream-8
     branches:
       - main
     always_run: false
@@ -232,7 +232,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-stream-9
+  - name: pull-common-instancetypes-functest-stream-9
     branches:
       - main
     always_run: false
@@ -273,7 +273,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-stream-9-s390x
+  - name: pull-common-instancetypes-functest-stream-9-s390x
     branches:
       - main
     always_run: false
@@ -313,7 +313,7 @@ presubmits:
             memory: 20Gi
         securityContext:
           privileged: true
-  - name: pull-common-instancetypes-kubevirt-functest-stream-10
+  - name: pull-common-instancetypes-functest-stream-10
     branches:
       - main
     always_run: false
@@ -354,7 +354,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-ubuntu
+  - name: pull-common-instancetypes-functest-ubuntu
     branches:
       - main
     always_run: false
@@ -395,7 +395,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-opensuse-tumbleweed
+  - name: pull-common-instancetypes-functest-opensuse-tumbleweed
     branches:
       - main
     always_run: false
@@ -436,7 +436,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-functest-opensuse-tumbleweed-s390x
+  - name: pull-common-instancetypes-opensuse-tumbleweed-s390x
     branches:
       - main
     always_run: false
@@ -476,7 +476,7 @@ presubmits:
             memory: 20Gi
         securityContext:
           privileged: true
-  - name: pull-common-instancetypes-kubevirt-functest-opensuse-leap
+  - name: pull-common-instancetypes-functest-opensuse-leap
     branches:
       - main
     always_run: false
@@ -517,7 +517,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-validation-os
+  - name: pull-common-instancetypes-functest-validation-os
     branches:
       - main
     always_run: false
@@ -561,7 +561,7 @@ presubmits:
           privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-debian-11
+  - name: pull-common-instancetypes-functest-debian-11
     branches:
       - main
     always_run: false
@@ -602,7 +602,7 @@ presubmits:
             privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-debian-12
+  - name: pull-common-instancetypes-functest-debian-12
     branches:
       - main
     always_run: false
@@ -643,7 +643,7 @@ presubmits:
             privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-debian-13
+  - name: pull-common-instancetypes-functest-debian-13
     branches:
       - main
     always_run: false
@@ -717,7 +717,7 @@ presubmits:
           resources:
             requests:
               memory: "8Gi"
-  - name: pull-common-instancetypes-kubevirt-functest-oraclelinux-8
+  - name: pull-common-instancetypes-functest-oraclelinux-8
     branches:
       - main
     always_run: false
@@ -761,7 +761,7 @@ presubmits:
             privileged: true
       nodeSelector:
         type: bare-metal-external
-  - name: pull-common-instancetypes-kubevirt-functest-oraclelinux-9
+  - name: pull-common-instancetypes-functest-oraclelinux-9
     branches:
       - main
     always_run: false
