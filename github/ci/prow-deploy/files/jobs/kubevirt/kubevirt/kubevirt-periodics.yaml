@@ -1207,10 +1207,10 @@ periodics:
         value: "true"
       - name: KUBEVIRT_PROVIDER_EXTRA_ARGS
         value: --prometheus-port 30007
+      - name: KUBEVIRT_WITH_ETC_CAPACITY
+        value: 8G
       - name: KUBEVIRT_WITH_ETC_IN_MEMORY
         value: "true"
-      - name: KUBEVIRT_WITH_ETC_CAPACITY
-        value: 1G
       image: quay.io/kubevirtci/bootstrap:v20260319-c8f1db8
       name: ""
       resources:
