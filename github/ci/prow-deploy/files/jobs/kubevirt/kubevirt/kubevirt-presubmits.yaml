@@ -1808,7 +1808,7 @@ presubmits:
         - name: KUBEVIRT_WITH_ETC_IN_MEMORY
           value: "true"
         - name: KUBEVIRT_WITH_ETC_CAPACITY
-          value: 1G
+          value: 8G
         image: quay.io/kubevirtci/bootstrap:v20260319-c8f1db8
         name: ""
         resources:
